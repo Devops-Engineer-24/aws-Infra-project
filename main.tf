@@ -13,19 +13,6 @@ module "ec2" {
   subnet_id   = module.vpc.subnet_id
 }
 
-module "s3" {
-  source        = "./modules/s3"
-  bucket_name   = "my-unique-bucket-name"  # Ensure the name is globally unique
-  acl           = "private"
-  versioning_enabled = true
-  environment   = "dev"
-}
-
-output "ec2_public_ip" {
-  description = "The public IP of the EC2 instance"
-  value       = module.ec2.public_ip
-}
-
 
 
 
