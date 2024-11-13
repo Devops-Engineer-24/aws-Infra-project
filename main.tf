@@ -17,7 +17,7 @@ terraform {
   backend "s3" {
     bucket         = "my-aws-terraform-state-bucket-aws"
     key            = "path/to/your/terraform.tfstate"
-    region         = "ap-south-1"
+    region         = "ap-northeast-1"
   }
 }
 
