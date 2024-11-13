@@ -13,11 +13,6 @@ module "ec2" {
   subnet_id   = module.vpc.subnet_id
 }
 
-output "ec2_public_ip" {
-  description = "The public IP of the EC2 instance"
-  value       = module.ec2.public_ip
-}
-
 # New S3 Bucket Resource
 resource "aws_s3_bucket" "my_bucket" {
   bucket = "my-unique-terraform-s3-bucket-name"  # Ensure this name is globally unique
