@@ -15,8 +15,10 @@ variable "subnet_id" {
   type        = string
 }
 
+# modules/ec2/variables.tf
 variable "instance_count" {
-  description = "The number of EC2 instances"
+  description = "The number of EC2 instances to create"
   type        = number
+  default     = 2  # Optional default value
 }
 
