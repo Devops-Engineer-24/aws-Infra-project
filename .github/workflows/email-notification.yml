@@ -24,4 +24,4 @@ jobs:
         fi
 
         # Send email notification using mail command
-        echo "The Terraform CI/CD pipeline has completed with status: $status. Check the logs for more details." | mail -s "Terraform CI/CD Pipeline Status: $status" -r "your-email@gmail.com" ${{ secrets.YOUR_EMAIL }}
+        echo "The Terraform CI/CD pipeline has completed with status: $status. Check the logs for more details." | mail -s "Terraform CI/CD Pipeline Status: $status" -r "mayurdevops23@gmail.com" ${{ secrets.YOUR_EMAIL }}
