@@ -15,9 +15,9 @@ module "ec2" {
 
 terraform {
   backend "s3" {
-    bucket         = "my-aws-terraform-state-bucket-aws"
-    key            = "path/to/your/terraform.tfstate"
-    region         = "ap-northeast-1"
+    bucket         = "terraform-state-s3-bucket-aws"
+    key            = "Tf_state_file/terraform.tfstate"
+    region         = "ap-south-1"
   }
 }
 
