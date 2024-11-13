@@ -13,16 +13,20 @@ module "ec2" {
   subnet_id   = module.vpc.subnet_id
 }
 
-# New S3 Bucket Resource
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-unique-terraform-s3-bucket-name"  # Ensure this name is globally unique
-  acl    = "private"  # Access control list (ACL), can be 'private', 'public-read', etc.
+module "s3" {
+  source        = "./modules/s3"
+  bucket_name   = "my-unique-bucket-name"  # Ensure the name is globally unique
+  acl           = "private"
+  versioning_enabled = true
+  environment   = "dev"
+}
 
-  versioning {
-    enabled = true  # Enable versioning on the S3 bucket
-  }
+output "ec2_public_ip" {
+  description = "The public IP of the EC2 instance"
+  value       = module.ec2.public_ip
+}
 
-  tags = {
-    Name        = "MyS3Bucket"
-  }
+output "s3_bucket_name" {
+  value       = module.s3.s3_bucket_name
+  description = "The name of the S3 bucket"
 }
