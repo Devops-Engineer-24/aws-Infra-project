@@ -1,9 +1,11 @@
+# outputs.tf
+
 output "vpc_id" {
-  description = "The ID of the created VPC"
+  description = "The VPC ID"
   value       = module.vpc.vpc_id
 }
 
-output "instance_id" {
-  description = "The ID of the created EC2 instance"
-  value       = module.ec2.instance_id
+output "subnet_id" {
+  description = "The Subnet ID"
+  value       = module.vpc.subnet_id
 }
