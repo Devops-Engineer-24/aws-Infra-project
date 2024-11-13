@@ -11,7 +11,6 @@ module "ec2" {
   ami_id      = var.ami_id
   instance_type = var.instance_type
   subnet_id   = module.vpc.subnet_id
-  instance_count = var.instance_count
 }
 
 terraform {
