@@ -53,6 +53,6 @@ jobs:
       run: terraform apply -auto-approve
 
     # Optionally, you can add a destroy step
-    - name: Terraform Destroy (Optional)
-      run: terraform destroy -auto-approve
-      if: github.ref == 'refs/heads/main'
+     # - name: Terraform Destroy (Optional)
+      # run: terraform destroy -auto-approve
+      # if: github.ref == 'refs/heads/main'
