@@ -1,20 +1,19 @@
-# modules/vpc/main.tf
+# modules/s3/main.tf
+resource "aws_s3_bucket" "this" {
+  bucket = var.bucket_name
+  acl    = var.acl
 
-resource "aws_vpc" "main" {
-  cidr_block = var.vpc_cidr
-  enable_dns_support = true
-  enable_dns_hostnames = true
+  versioning {
+    enabled = var.versioning_enabled
+  }
+
   tags = {
-    Name = "main-vpc"
+    Name        = "Terraform-S3-Bucket"
+    Environment = var.environment
   }
 }
 
-resource "aws_subnet" "main" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.subnet_cidr
-  availability_zone = "ap-south-1a"
-  tags = {
-    Name = "main-subnet"
-  }
+output "s3_bucket_name" {
+  value       = aws_s3_bucket.this.bucket
+  description = "The name of the S3 bucket"
 }
-
