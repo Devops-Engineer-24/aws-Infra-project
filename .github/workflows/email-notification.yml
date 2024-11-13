@@ -1,0 +1,27 @@
+name: Email Notification Workflow
+
+on:
+  workflow_run:
+    workflows: ["Terraform CI/CD Pipeline"]  # The name of the first workflow
+    types:
+      - completed  # Trigger this when the first workflow completes
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest  # Set the runner environment to Ubuntu
+    steps:
+    - name: Send Email Notification
+      run: |
+        # Install mailutils to use mail command
+        sudo apt-get update
+        sudo apt-get install -y mailutils
+
+        # Check the status of the first workflow (successful or failed)
+        if [ "${{ github.event.workflow_run.conclusion }}" == "success" ]; then
+          status="successful"
+        else
+          status="failed"
+        fi
+
+        # Send email notification using mail command
+        echo "The Terraform CI/CD pipeline has completed with status: $status. Check the logs for more details." | mail -s "Terraform CI/CD Pipeline Status: $status" -r "mayurdevops23@gmail.com" 
